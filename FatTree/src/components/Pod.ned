@@ -21,6 +21,7 @@ module Pod
         int k;
         int vmnum;
         int position;
+        int khalf = k/2;
 
         @display("bgb=600,250");
     gates:
@@ -58,7 +59,7 @@ module Pod
         }
 
 		// Connect the aggregation routers with the compound ports.
-        for i=0..sizeof(aggRouters)-1 {
+        for i=0..sizeof(aggRouters)-1 , for j=0..khalf-1 {
             aggRouters[i].pppg++ <--> IdealChannel <--> podg++;
         }
 }
